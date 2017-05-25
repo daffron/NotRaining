@@ -1,4 +1,6 @@
 import React from 'react'
+import {getWeather} from '../api'
+
 // import Header from './Header'
 // import Results from './Results'
 import Search from './Search'
@@ -34,4 +36,3 @@ class App extends React.Component{
 }
 
 export default App
-
