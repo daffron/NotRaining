@@ -2,7 +2,7 @@ import React from 'react'
 
 class Search extends React.Component {
     constructor(props) {
-        super(props) 
+        super(props)
         this.state = {
             errorMsg: null,
             searchTerm:''
@@ -23,7 +23,7 @@ render() {
     return (
       <div className="searchForm">
           <form onSubmit = {this.handleSubmit.bind(this)}>
-                <input type = 'text'  name= "searchTerm"  onChange = {this.handleChange.bind(this)}></input>
+                <input type = 'text'  name= "searchTerm" placeholder="Show me the weather in... city" onChange = {this.handleChange.bind(this)}></input>
                 <button>Search</button>
            </form>
       </div>
