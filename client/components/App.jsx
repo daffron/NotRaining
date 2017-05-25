@@ -1,7 +1,7 @@
 import React from 'react'
 
 // import Header from './Header'
-// import Results from './Results'
+import Results from './Results'
 import Search from './Search'
 import {getWeather} from '../api'
 
