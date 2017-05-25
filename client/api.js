@@ -17,9 +17,9 @@ function getWeather(city,callback) {
   })
 }
 
-function get3DForecast () {
+function get3DForecast (city, callback) {
   request
-  .get(`api.openweathermap.org/data/2.5/forecast/daily?q=${city}&units=metric&cnt=3&APPID=fc04e2e516b1de4348fb0323f981a1d9`)
+  .get(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&units=metric&cnt=3&APPID=fc04e2e516b1de4348fb0323f981a1d9`)
   .set('Accept', 'application/json')
   .end((err, res) => {
     if(err) {
