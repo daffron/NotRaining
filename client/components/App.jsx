@@ -1,4 +1,6 @@
 import React from 'react'
+import {getWeather} from '../api'
+
 
 const App = () => {
   return (
@@ -7,4 +9,3 @@ const App = () => {
 }
 
 export default App
-
