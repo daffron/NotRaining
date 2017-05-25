@@ -1,9 +1,9 @@
 import React from 'react'
 
-// import Header from './Header'
+//import Header from './Header'
 import Results from './Results'
 import Search from './Search'
-import {getWeather} from '../api'
+import {getWeather, get3DForecast } from '../api'
 
 class App extends React.Component{
   constructor(props){
@@ -12,14 +12,42 @@ class App extends React.Component{
     this.state = {
       displayResult: false,
       displaySearch: true,
-      weatherToday:{
+  weatherToday:{
                   city: '',
                   temp: 0,
                   description: '',
                   icon: '',
                   low: 0,
                   high: 0
-                  }
+                },
+  futureWeather: [{
+      weatherPlusOne: {
+                  temp: 0,
+                  description: '',
+                  icon: '',
+                  low: 0,
+                  high: 0
+      }
+    },
+      {
+        weatherPlusTwo:{
+                  temp: 0,
+                  description: '',
+                  icon: '',
+                  low: 0,
+                  high: 0
+      }
+    },
+      {
+        weatherPlusThree: {
+                  temp: 0,
+                  description: '',
+                  icon: '',
+                  low: 0,
+                  high: 0
+          }
+        }
+      ]               
     }
 
     this.handleSearchClick = this.handleSearchClick.bind(this)
@@ -39,8 +67,41 @@ class App extends React.Component{
         },
         displayResult: true
       })
+
     })
-   
+   get3DForecast(searchterm,(err,res) => {
+      if (err) return err
+      this.setState({
+     futureWeather: [{
+        weatherPlusOne: {
+                  temp: res.list[1].temp.day,
+                  description: res.list[1].weather[0].description,
+                  icon: res.list[1].weather[0].icon,
+                  low: res.list[1].temp.min,
+                  high: res.list[1].temp.max
+        }
+      },
+        {
+          weatherPlusTwo:{
+                  temp: res.list[2].temp.day,
+                  description: res.list[2].weather[0].description,
+                  icon: res.list[2].weather[0].icon,
+                  low: res.list[2].temp.min,
+                  high: res.list[2].temp.max
+        }
+      },
+        {
+          weatherPlusThree: {
+                  temp: res.list[3].temp.day,
+                  description: res.list[3].weather[0].description,
+                  icon: res.list[3].weather[0].icon,
+                  low: res.list[3].temp.min,
+                  high: res.list[3].temp.max
+            }
+          }
+        ]                     
+      })
+   })
   }
 
 
@@ -49,7 +110,7 @@ class App extends React.Component{
     return (
       <div className="MainApp">
         {this.state.displaySearch&& <Search handleSearchClick={this.handleSearchClick}/>}
-        {this.state.displayResult&& <Results weatherToday={this.state.weatherToday}/>}
+        {this.state.displayResult&& <Results weatherToday={this.state.weatherToday}futureWeather={this.state.futureWeather}/>}
       </div>
     )
   }
