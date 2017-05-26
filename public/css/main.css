@@ -1,35 +1,20 @@
-.today .temperature {
 
-}
-.today .description {
-
-}
-
-.multiple .temperature {
-
-}
 .header {
     font-size:60px;
-    font-family: 'Monoton', sans-serif;
-
-}
-
-.landingpage {
-    color: white;
-    background-image: url('../images/landing.jpeg');
-    background-size: cover ;
-    height: 1000px;
-    background-repeat:no-repeat;
-    font-family: 'Oxygen', sans-serif!important;
+    font-family:  sans-serif;
     text-align: center;
-
+    margin-bottom: 50%;
 
 }
-#app {
-margin:0;
-}
+ *{
+    text-align: center;
+ }
+
+
+
 body  {
-    border-right: 0
+    background-color: grey;
+
 }
 
 .container {

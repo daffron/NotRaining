@@ -3,7 +3,7 @@ import React from 'react'
  const Header = () => { 
  return (
         <div className ="header">
-            <h1> React Weather App </h1>
+            <h1> Is it raining in Auckland?</h1>
         </div>
     )
  }

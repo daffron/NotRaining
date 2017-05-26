@@ -6,13 +6,13 @@
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon --watch server server/index & webpack --watch",
-     "test": "ava -v 'test/**/*.test.js'",
+    "test": "ava -v 'test/**/*.test.js'",
     "watch": "nodemon -e js,jsx -x npm test"
   },
   "ava": {
-   "require": "babel-register",
-   "babel": "inherit"
- },
+    "require": "babel-register",
+    "babel": "inherit"
+  },
   "babel": {
     "presets": [
       "es2015",
