@@ -10,6 +10,8 @@ class App extends React.Component{
     super(props)
 
     this.state = {
+      displayHeader: true,
+      displayLanding: true,
       displayResult: false,
       displaySearch: true,
   weatherToday:{
@@ -21,31 +23,25 @@ class App extends React.Component{
                   high: 0
                 },
   futureWeather: [{
-      weatherPlusOne: {
                   temp: 0,
                   description: '',
                   icon: '',
                   low: 0,
                   high: 0
-      }
+        },
+      {
+                  temp: 0,
+                  description: '',
+                  icon: '',
+                  low: 0,
+                  high: 0
     },
       {
-        weatherPlusTwo:{
                   temp: 0,
                   description: '',
                   icon: '',
                   low: 0,
                   high: 0
-      }
-    },
-      {
-        weatherPlusThree: {
-                  temp: 0,
-                  description: '',
-                  icon: '',
-                  low: 0,
-                  high: 0
-          }
         }
       ]               
     }
@@ -65,7 +61,8 @@ class App extends React.Component{
           low: res.main.temp_min,
           high: res.main.temp_max
         },
-        displayResult: true
+        displayResult: true,
+        displayLanding: false,
       })
 
     })
@@ -73,31 +70,25 @@ class App extends React.Component{
       if (err) return err
       this.setState({
      futureWeather: [{
-        weatherPlusOne: {
                   temp: res.list[1].temp.day,
                   description: res.list[1].weather[0].description,
                   icon: res.list[1].weather[0].icon,
                   low: res.list[1].temp.min,
                   high: res.list[1].temp.max
-        }
       },
         {
-          weatherPlusTwo:{
                   temp: res.list[2].temp.day,
                   description: res.list[2].weather[0].description,
                   icon: res.list[2].weather[0].icon,
                   low: res.list[2].temp.min,
                   high: res.list[2].temp.max
-        }
       },
         {
-          weatherPlusThree: {
                   temp: res.list[3].temp.day,
                   description: res.list[3].weather[0].description,
                   icon: res.list[3].weather[0].icon,
                   low: res.list[3].temp.min,
                   high: res.list[3].temp.max
-            }
           }
         ]                     
       })
