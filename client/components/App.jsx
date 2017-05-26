@@ -1,6 +1,6 @@
 import React from 'react'
 
-//import Header from './Header'
+import Header from './Header'
 import Results from './Results'
 import Search from './Search'
 import {getWeather, get3DForecast } from '../api'
@@ -23,20 +23,23 @@ class App extends React.Component{
                   high: 0
                 },
   futureWeather: [{
+                  date:0,
                   temp: 0,
                   description: '',
                   icon: '',
                   low: 0,
                   high: 0
         },
-      {
+      {           
+                  date:0,                  
                   temp: 0,
                   description: '',
                   icon: '',
                   low: 0,
                   high: 0
     },
-      {
+      {           
+                  date:0,                  
                   temp: 0,
                   description: '',
                   icon: '',
@@ -70,13 +73,15 @@ class App extends React.Component{
       if (err) return err
       this.setState({
      futureWeather: [{
+                  date: res.list[1].dt,
                   temp: res.list[1].temp.day,
                   description: res.list[1].weather[0].description,
                   icon: res.list[1].weather[0].icon,
                   low: res.list[1].temp.min,
                   high: res.list[1].temp.max
       },
-        {
+        {         
+                  date: res.list[2].dt,                  
                   temp: res.list[2].temp.day,
                   description: res.list[2].weather[0].description,
                   icon: res.list[2].weather[0].icon,
@@ -84,6 +89,7 @@ class App extends React.Component{
                   high: res.list[2].temp.max
       },
         {
+                  date: res.list[3].dt,                  
                   temp: res.list[3].temp.day,
                   description: res.list[3].weather[0].description,
                   icon: res.list[3].weather[0].icon,
@@ -100,6 +106,7 @@ class App extends React.Component{
   render(){
     return (
       <div className="MainApp">
+        <Header />
         {this.state.displaySearch&& <Search handleSearchClick={this.handleSearchClick}/>}
         {this.state.displayResult&& <Results weatherToday={this.state.weatherToday}futureWeather={this.state.futureWeather}/>}
       </div>
