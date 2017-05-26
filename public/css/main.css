@@ -8,7 +8,30 @@
 .multiple .temperature {
 
 }
-h1 {
+.header {
     font-size:60px;
-    font-family: 'Monoton', cursive;
+    font-family: 'Monoton', sans-serif;
+
+}
+
+.landingpage {
+    color: white;
+    background-image: url('../images/landing.jpeg');
+    background-size: cover ;
+    height: 1000px;
+    background-repeat:no-repeat;
+    font-family: 'Oxygen', sans-serif!important;
+    text-align: center;
+
+
+}
+#app {
+margin:0;
+}
+body  {
+    border-right: 0
+}
+
+.container {
+    margin: none!important
 }

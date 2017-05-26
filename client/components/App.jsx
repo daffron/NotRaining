@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Landing from './Landing'
 import Header from './Header'
 import Results from './Results'
 import Search from './Search'
@@ -10,10 +10,10 @@ class App extends React.Component{
     super(props)
 
     this.state = {
-      displayHeader: true,
+      displayHeader: false,
       displayLanding: true,
       displayResult: false,
-      displaySearch: true,
+      displaySearch: false,
   weatherToday:{
                   city: '',
                   temp: 0,
@@ -50,6 +50,15 @@ class App extends React.Component{
     }
 
     this.handleSearchClick = this.handleSearchClick.bind(this)
+  
+  }
+
+  removeLanding(){
+    this.setState({
+      displayHeader: true,
+      displayLanding: false,
+      displaySearch: true
+    })
   }
 
   handleSearchClick(searchterm) {
@@ -65,7 +74,7 @@ class App extends React.Component{
           high: res.main.temp_max
         },
         displayResult: true,
-        displayLanding: false,
+        
       })
 
     })
@@ -106,7 +115,8 @@ class App extends React.Component{
   render(){
     return (
       <div className="MainApp">
-        <Header />
+        {this.state.displayLanding&& <Landing removeLanding={this.removeLanding.bind(this)} />}
+        {this.state.displayHeader&& <Header />}
         {this.state.displaySearch&& <Search handleSearchClick={this.handleSearchClick}/>}
         {this.state.displayResult&& <Results weatherToday={this.state.weatherToday}futureWeather={this.state.futureWeather}/>}
       </div>
