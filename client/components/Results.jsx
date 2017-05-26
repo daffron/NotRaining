@@ -20,15 +20,18 @@ export default (props) => {
       </div>
       <h2>3 Day Forecast</h2>
       <div className="multiple">
-       {futureWeather.map((day) => {
-         return 
-         <div className={futureWeather.day}>
-         {futureWeather.day}
-         {futureWeather.temperature}
-        {futureWeather.min}
-        {futureWeather.max}
+       {props.futureWeather.map((day) => {
+         console.log(day)
+         return (
+         <div className="day">
+         {day.temp}
+         {day.description}
+        {day.icon}
+        {day.low}
+          {day.high}
          </div>
-       })}
+       )
+    })}
       </div>
     </div>
   )
