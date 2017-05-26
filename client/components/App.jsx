@@ -1,8 +1,6 @@
 import React from 'react'
-
-import Header from './Header'
-import Results from './Results'
-
+import Yes from './Yes'
+import No from './No'
 import {getWeather} from '../api'
 
 class App extends React.Component{
@@ -12,6 +10,7 @@ class App extends React.Component{
     this.state = {
       displayHeader: true,
       displayResult: true,
+      yes: null,
 
   weatherToday:{
                   city: '',
@@ -46,6 +45,16 @@ class App extends React.Component{
         },
         displayResult: true,
       })
+          if (res.weather[0].icon == '09d' || res.weather[0].icon == '09n'  || res.weather[0].icon == '10n'  || res.weather[0].icon == '10d' ){
+
+        this.setState ({
+          yes: true
+        })
+      } else {
+        this.setState ({
+          yes: false
+        })
+      }
     })
   }
 
@@ -56,9 +65,8 @@ class App extends React.Component{
     return (
       <div className="MainApp">
 
-        {this.state.displayHeader&& <Header />}
-
-        {this.state.displayResult&& <Results weatherToday={this.state.weatherToday}/>}
+        {this.state.yes&&<Yes/>}
+        {!this.state.yes&& <No/>}
       </div>
     )
   }
