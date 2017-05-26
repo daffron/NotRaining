@@ -6,9 +6,13 @@
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon --watch server server/index & webpack --watch",
-    "test": "tape -r babel-register 'test/**/*.test.js' | tap-diff",
+     "test": "ava -v 'test/**/*.test.js'",
     "watch": "nodemon -e js,jsx -x npm test"
   },
+  "ava": {
+   "require": "babel-register",
+   "babel": "inherit"
+ },
   "babel": {
     "presets": [
       "es2015",
@@ -25,6 +29,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-register": "^6.18.0",
     "enzyme": "^2.7.0",
+    "jsdom": "^11.0.0",
     "jsx-loader": "^0.13.2",
     "nodemon": "^1.11.0",
     "react": "^15.4.2",
